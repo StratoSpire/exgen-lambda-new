@@ -1,13 +1,23 @@
-defmodule ElixirLambdaTemplate.MixProject do
+defmodule <%= module %>.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :elixir_lambda_template,
+      app: :<%= app_name %>,
       version: "0.1.0",
-      elixir: "~> 1.8",
+      elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      default_release: :aws_lambda_elixir_runtime,
+      releases: [
+        <%= app_name %>: [
+          include_executables_for: [:unix],
+          applications: [
+            runtime_tools: :permanent,
+            aws_lambda_elixir_runtime: :permanent
+          ]
+        ],
+      ]
     ]
   end
 
@@ -27,9 +37,8 @@ defmodule ElixirLambdaTemplate.MixProject do
         :aws_lambda_elixir_runtime,
         git: "https://github.com/StratoSpire/aws-lambda-elixir-runtime.git",
         sparse: "elixir_runtime",
-        ref: "933afb5"
+        ref: "8acb532"
       },
-      {:distillery, "~> 2.0"}
     ]
   end
 end
