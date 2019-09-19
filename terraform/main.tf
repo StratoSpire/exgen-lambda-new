@@ -1,12 +1,9 @@
 #terraform {
-#  required_version = ">= 0.12.2"
-#
-#  backend "s3" {
-#    region         = "us-west-2"
-#    bucket         = "<STATE BACKEND BUCKET NAME>"
-#    key            = "deployments/<%= app_name %>/prod/terraform.tfstate"
-#    dynamodb_table = "<STATE BACKEND DYNAMODB TABLE NAME>"
-#    encrypt        = "true"
+#  backend "remote" {
+#    organization = "<TERRAFORM CLOUD ORGANIZATION>"
+#    workspaces {
+#      name = "<TERRAFORM CLOUD WORKSPACE>"
+#    }
 #  }
 #}
 
