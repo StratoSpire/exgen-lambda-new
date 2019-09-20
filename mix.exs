@@ -37,7 +37,7 @@ defmodule <%= module %>.MixProject do
         :aws_lambda_elixir_runtime,
         git: "https://github.com/StratoSpire/aws-lambda-elixir-runtime.git",
         sparse: "elixir_runtime",
-        ref: "61766df"
+        ref: "388089b"
       },
     ]
   end
